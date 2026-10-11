@@ -1,0 +1,42 @@
+# ~/.gitconfig
+# Replace <PLACEHOLDERS> with user-specific values when deploying to $HOME.
+# If only using a single GitHub account, remove the [url ...] and [includeIf ...] sections.
+
+[user]
+    name = <PRIMARY_NAME>
+    email = <PRIMARY_EMAIL>
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+
+[core]
+    editor = nvim
+    excludesfile = ~/.config/git/ignore
+
+# --- Optional: Multi-Account GitHub SSH & Identity Routing -------------------
+# Automatically route <PRIMARY_GITHUB_USER> repos through the primary SSH key
+[url "git@github.com-<PRIMARY_GITHUB_USER>:<PRIMARY_GITHUB_USER>/"]
+    insteadOf = https://github.com/<PRIMARY_GITHUB_USER>/
+    insteadOf = git@github.com:<PRIMARY_GITHUB_USER>/
+
+# Automatically route <SECONDARY_GITHUB_USER> repos through the secondary SSH key
+[url "git@github.com-<SECONDARY_GITHUB_USER>:<SECONDARY_GITHUB_USER>/"]
+    insteadOf = https://github.com/<SECONDARY_GITHUB_USER>/
+    insteadOf = git@github.com:<SECONDARY_GITHUB_USER>/
+
+# Automatically switch Git author identity based on remote URL
+[includeIf "hasconfig:remote.*.url:*<PRIMARY_GITHUB_USER>*"]
+    path = ~/.gitconfig-<PRIMARY_GITHUB_USER>
+
+[includeIf "hasconfig:remote.*.url:*<SECONDARY_GITHUB_USER>*"]
+    path = ~/.gitconfig-<SECONDARY_GITHUB_USER>
+
+# Optional directory-based identity override
+[includeIf "gitdir:~/workspaces/personal/"]
+    path = ~/.gitconfig-personal

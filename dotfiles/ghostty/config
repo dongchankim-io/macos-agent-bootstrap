@@ -1,0 +1,18 @@
+# Ghostty Configuration (~/.config/ghostty/config)
+# Ghostty includes built-in Nerd Font symbols out of the box.
+
+font-size = 13
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+
+# Window appearance & padding
+window-padding-x = 10
+window-padding-y = 8
+window-save-state = always
+
+# macOS ergonomics
+macos-option-as-alt = true
+copy-on-select = clipboard
+
+# Shell integration
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title

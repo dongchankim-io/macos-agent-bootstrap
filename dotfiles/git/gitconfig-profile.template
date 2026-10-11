@@ -1,0 +1,6 @@
+# ~/.gitconfig-<ACCOUNT_NAME>
+# Included automatically by ~/.gitconfig when a repo matches the account remote URL or directory.
+
+[user]
+    name = <ACCOUNT_USER_NAME>
+    email = <ACCOUNT_USER_EMAIL>

@@ -1,0 +1,50 @@
+# Starship Prompt Configuration (~/.config/starship.toml)
+# Clean, fast 2-line prompt with Git status, execution time, and active runtime info.
+
+add_newline = true
+command_timeout = 1000
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$golang\
+$rust\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+truncation_length = 4
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+
+[git_status]
+style = "bold yellow"
+
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration]($style) "
+style = "yellow"
+
+[python]
+symbol = "🐍 "
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[nodejs]
+symbol = "⬢ "
+format = "via [$symbol($version )]($style)"
+
+[golang]
+symbol = "🐹 "
+format = "via [$symbol($version )]($style)"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"

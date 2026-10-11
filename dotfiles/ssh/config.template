@@ -1,0 +1,34 @@
+# ~/.ssh/config
+# Uses ssh.github.com over Port 443 so Git over SSH works reliably even on restricted networks.
+# Replace <PRIMARY_GITHUB_USER> and <SECONDARY_GITHUB_USER> when deploying to ~/.ssh/config.
+
+# Default GitHub account
+Host github.com
+  HostName ssh.github.com
+  Port 443
+  User git
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519_<PRIMARY_GITHUB_USER>
+  IdentitiesOnly yes
+
+# --- Optional: Multi-Account GitHub Aliases ----------------------------------
+# Primary GitHub account alias (matched by [url] insteadOf in ~/.gitconfig)
+Host github.com-<PRIMARY_GITHUB_USER>
+  HostName ssh.github.com
+  Port 443
+  User git
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519_<PRIMARY_GITHUB_USER>
+  IdentitiesOnly yes
+
+# Secondary GitHub account alias (matched by [url] insteadOf in ~/.gitconfig)
+Host github.com-<SECONDARY_GITHUB_USER>
+  HostName ssh.github.com
+  Port 443
+  User git
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519_<SECONDARY_GITHUB_USER>
+  IdentitiesOnly yes

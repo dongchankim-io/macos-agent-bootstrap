@@ -1,0 +1,19 @@
+# ~/.config/git/ignore — Global Gitignore
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editors & IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local environment overrides
+.env
+.env.local
+.zshrc.local

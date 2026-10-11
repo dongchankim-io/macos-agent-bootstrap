@@ -1,0 +1,66 @@
+# --- Detect IDE / AI Agent Terminals (must be at the very top) ---------------
+# Uses a clean, single-line prompt inside VS Code, Cursor, Antigravity, or
+# non-interactive agent terminals so command-completion detection never hangs.
+if [[ "$TERM_PROGRAM" == "vscode" || "$TERM_PROGRAM" == "Cursor" || "$TERM_PROGRAM" == "Antigravity" || -n "$VSCODE_SHELL_INTEGRATION" || -n "$ANTIGRAVITY_AGENT" || "$TERM" == "dumb" ]]; then
+  export AGENT_SAFE_TERM=1
+fi
+# -----------------------------------------------------------------------------
+
+# Homebrew (Apple Silicon default, fallback to Intel)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# User local binaries (used by uv, pipx, and standalone CLIs)
+export PATH="$HOME/.local/bin:$PATH"
+
+# Editor aliases (Neovim)
+if command -v nvim >/dev/null 2>&1; then
+  alias vim="nvim"
+  alias vi="nvim"
+  alias vimdiff="nvim -d"
+  export EDITOR="nvim"
+  export VISUAL="nvim"
+fi
+
+# History & completion settings
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt SHARE_HISTORY
+setopt AUTO_CD
+
+autoload -Uz compinit && compinit -C
+
+# Zsh UX plugins (order matters: autosuggestions first, syntax-highlighting last)
+if [[ -f "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+if [[ -f "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+# Prompt initialization
+if [[ -z "$AGENT_SAFE_TERM" ]]; then
+  # Interactive terminal (e.g., Ghostty): load Starship prompt
+  if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+  fi
+else
+  # Agent/IDE-safe single-line prompt (no right prompt or async redraws)
+  PROMPT='%n@%m:%~ %# '
+  RPROMPT=''
+  export PROMPT_EOL_MARK=''
+fi
+
+# VS Code / Cursor shell integration hooks for reliable command boundary detection
+autoload -Uz add-zsh-hook
+if [[ ${+functions[vscode_preexec]} -eq 1 ]]; then add-zsh-hook preexec vscode_preexec; fi
+if [[ ${+functions[vscode_precmd]}  -eq 1 ]]; then add-zsh-hook precmd  vscode_precmd;  fi
+
+# Optional local overrides (untracked machine-specific env vars)
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
