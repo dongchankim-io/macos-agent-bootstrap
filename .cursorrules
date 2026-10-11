@@ -1,0 +1,8 @@
+# Cursor AI Rules for macOS Agent Bootstrap
+
+When working in this workspace or when the user asks to configure their macOS machine:
+1. Follow the interactive playbook in `AGENTS.md`.
+2. Run `bash scripts/audit.sh` to check what is already installed on the Mac without making changes.
+3. Keep the environment fresh and minimal: install the minimal core from `Brewfile`, and ask the user before installing any optional tool packs from `catalog/optional-packages.md`.
+4. Ensure all user dotfile changes in `$HOME` are backed up first.
+5. Never commit personal user identifiers (emails, usernames, keys) back into this git repository.

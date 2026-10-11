@@ -41,10 +41,20 @@ The agent will:
 ```text
 .
 ├── AGENTS.md                        # Step-by-step interactive playbook for AI agents
-├── Brewfile                         # Minimal core Homebrew bundle (Ghostty, Starship, Zsh plugins, Neovim)
+├── CLAUDE.md                        # Entrypoint pointer for Claude Code
+├── .cursorrules                     # Rules for Cursor AI composer & agents
+├── .github/
+│   └── copilot-instructions.md      # Instructions for GitHub Copilot Agent mode
+├── llms.txt                         # Context index following llmstxt.org specification
+├── Brewfile                         # Minimal core Homebrew bundle (Ghostty, Starship, Neovim, Zsh plugins)
 ├── README.md                        # Overview and quick start guide
 ├── catalog/
 │   └── optional-packages.md         # Curated optional tool packs (uv, gh, node, go, cloud, etc.)
+├── scripts/
+│   └── audit.sh                     # Zero-dependency non-destructive system audit script
+├── skills/
+│   └── mac-setup/
+│       └── SKILL.md                 # Agent skill definition for skill-enabled agents
 └── dotfiles/
     ├── ghostty/
     │   └── config                   # ~/.config/ghostty/config

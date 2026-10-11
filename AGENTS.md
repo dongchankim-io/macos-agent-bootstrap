@@ -22,13 +22,11 @@ This repository follows a **Fresh & Minimal Core** philosophy:
 ## Step-by-Step Execution Workflow
 
 ### Phase 1: System Audit (Read-Only)
-Run a quick, non-destructive check of the target Mac:
-- Check architecture and macOS version: `uname -m && sw_vers`
-- Check Xcode Command Line Tools: `xcode-select -p`
-- Check Homebrew installation: `which brew || /opt/homebrew/bin/brew --version`
-- Check existing dotfiles in `~` and `~/.config`:
-  - `~/.zshrc`, `~/.gitconfig`, `~/.ssh/config`
-  - `~/.config/nvim`, `~/.config/ghostty`, `~/.config/starship.toml`
+Run the built-in non-destructive audit script to get an instant snapshot of the target Mac:
+```zsh
+bash scripts/audit.sh
+```
+This inspects CPU architecture (`uname -m`), macOS version, Xcode Command Line Tools, Homebrew status, installed core binaries, and existing dotfiles in `$HOME`.
 
 Summarize what is already installed vs. what is missing before proceeding to Phase 2.
 
