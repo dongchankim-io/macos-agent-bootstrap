@@ -12,7 +12,7 @@ This repository follows a **Fresh & Minimal Core** philosophy:
 
 ## Critical Rules for the Agent
 
-1. **Never Overwrite Without Backup**: Before modifying or replacing any existing file in `$HOME` (such as `~/.zshrc`, `~/.gitconfig`, `~/.ssh/config`, `~/.config/nvim/init.vim`, or `~/.config/ghostty/config`), back up existing files to `~/.dotfiles-backup-$(date +%Y%m%d-%H%M%S)/`.
+1. **Never Overwrite Without Backup**: Before modifying or replacing any existing file in `$HOME` (such as `~/.zshrc`, `~/.gitconfig`, `~/.ssh/config`, `~/.config/nvim/init.lua`, or `~/.config/ghostty/config`), back up existing files to `~/.dotfiles-backup-$(date +%Y%m%d-%H%M%S)/`.
 2. **Zero Personal Info in the Repo**: Never write the user's personal name, email, GitHub username, or SSH keys back into this repository. Only write personalized configs to `$HOME` (`~/.gitconfig`, `~/.ssh/config`, etc.).
 3. **Interactive First**: Do not blindly install optional packages. Complete the **Phase 2 User Interview** before running installations.
 4. **Apple Silicon & Intel Paths**: Default to `/opt/homebrew` on Apple Silicon (`arm64`) and `/usr/local` on Intel (`x86_64`). Always verify architecture with `uname -m`.
@@ -92,7 +92,7 @@ Back up any existing files first, then install:
 2. **Starship Prompt** ([`dotfiles/starship.toml`](dotfiles/starship.toml) → `~/.config/starship.toml`):
    - Clean 2-line prompt showing directory, Git branch/status, execution time, and active language runtimes.
 
-3. **Neovim Configuration** ([`dotfiles/nvim/init.vim`](dotfiles/nvim/init.vim) → `~/.config/nvim/init.vim`):
+3. **Neovim Configuration** ([`dotfiles/nvim/init.lua`](dotfiles/nvim/init.lua) → `~/.config/nvim/init.lua`):
    - Lightweight, zero-plugin setup with syntax highlighting, line numbers, 4-space indentation, incremental search, whitespace visibility, and the `industry` colorscheme.
 
 4. **Ghostty Configuration** ([`dotfiles/ghostty/config`](dotfiles/ghostty/config) → `~/.config/ghostty/config`):

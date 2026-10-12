@@ -11,6 +11,6 @@
 - [dotfiles/zshrc](dotfiles/zshrc): Clean Zsh config with IDE/agent terminal detection to prevent prompt hangs.
 - [dotfiles/starship.toml](dotfiles/starship.toml): Fast 2-line prompt configuration.
 - [dotfiles/ghostty/config](dotfiles/ghostty/config): Native macOS Ghostty configuration.
-- [dotfiles/nvim/init.vim](dotfiles/nvim/init.vim): Lightweight, zero-plugin Neovim configuration.
+- [dotfiles/nvim/init.lua](dotfiles/nvim/init.lua): Lightweight, zero-plugin Neovim configuration.
 - [dotfiles/git/gitconfig.template](dotfiles/git/gitconfig.template): Sanitized single- or multi-account Git config.
 - [dotfiles/ssh/config.template](dotfiles/ssh/config.template): Sanitized SSH config over Port 443 with macOS Keychain support.

@@ -70,7 +70,7 @@ check_file() {
 
 check_file "Zsh Config" "$HOME/.zshrc"
 check_file "Starship Config" "$HOME/.config/starship.toml"
-check_file "Neovim Config" "$HOME/.config/nvim/init.vim"
+check_file "Neovim Config" "$HOME/.config/nvim/init.lua"
 check_file "Ghostty Config" "$HOME/.config/ghostty/config"
 check_file "Git Config" "$HOME/.gitconfig"
 check_file "SSH Config" "$HOME/.ssh/config"

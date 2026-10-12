@@ -65,7 +65,7 @@ The agent will:
     │   ├── gitconfig.template       # ~/.gitconfig (single or multi-account)
     │   └── gitignore_global         # ~/.config/git/ignore
     ├── nvim/
-    │   └── init.vim                 # ~/.config/nvim/init.vim
+    │   └── init.lua                 # ~/.config/nvim/init.lua
     ├── ssh/
     │   └── config.template          # ~/.ssh/config (Port 443 + multi-account keys)
     ├── starship.toml                # ~/.config/starship.toml
