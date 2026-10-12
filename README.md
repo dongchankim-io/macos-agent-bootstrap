@@ -1,5 +1,7 @@
 # macos-agent-bootstrap
 
+![macos-agent-bootstrap banner](assets/banner.jpg)
+
 Interactive AI agent playbook ([`AGENTS.md`](AGENTS.md)) and minimal dotfiles to set up a fresh macOS development environment without bloat.
 
 ---
